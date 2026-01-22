@@ -2,56 +2,79 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Agenda Cultural</title>
+  <title>Agenda Cultural · Datos Abiertos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #ffffff;
-      --text: #111;
-      --card: #f6f6f6;
-      --accent: #7b5cff;
+      --bg: #f5f5f7;
+      --card: #ffffff;
+      --text: #1d1d1f;
+      --muted: #6e6e73;
+      --accent: #6c63ff;
+      --radius: 20px;
     }
 
     body.dark {
-      --bg: #0f0f0f;
-      --text: #f2f2f2;
-      --card: #1a1a1a;
-      --accent: #9f8cff;
+      --bg: #0f0f12;
+      --card: #1c1c22;
+      --text: #ffffff;
+      --muted: #b3b3b3;
     }
 
     * {
-      margin: 0;
-      padding: 0;
       box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
     }
 
     body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
       background: var(--bg);
       color: var(--text);
-      transition: 0.3s;
+      transition: .3s;
     }
 
     header {
-      padding: 30px 60px;
+      padding: 90px 20px 70px;
+      text-align: center;
+      background: linear-gradient(135deg, #6c63ff, #9b8cff);
+      color: white;
+    }
+
+    header h1 {
+      font-size: 42px;
+      margin-bottom: 10px;
+      font-weight: 600;
+      letter-spacing: -1px;
+    }
+
+    header p {
+      max-width: 680px;
+      margin: auto;
+      opacity: .95;
+      font-size: 17px;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background: var(--card);
+      padding: 14px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      position: sticky;
-      top: 0;
-      background: var(--bg);
+      box-shadow: 0 6px 20px rgba(0,0,0,.05);
       z-index: 10;
     }
 
     nav a {
-      margin-left: 25px;
+      margin-right: 18px;
       text-decoration: none;
-      color: var(--text);
       font-weight: 500;
+      color: var(--text);
     }
 
     nav a:hover {
@@ -60,154 +83,188 @@
 
     .toggle {
       cursor: pointer;
+      background: var(--accent);
       border: none;
-      background: var(--card);
-      padding: 10px 18px;
-      border-radius: 30px;
+      padding: 8px 16px;
+      border-radius: 20px;
+      color: white;
+      font-weight: 500;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 70px 20px;
     }
 
     section {
-      padding: 80px 60px;
-    }
-
-    h1 {
-      font-size: 42px;
-      margin-bottom: 20px;
+      margin-bottom: 80px;
     }
 
     h2 {
+      font-size: 26px;
       margin-bottom: 20px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+      gap: 24px;
     }
 
     .card {
       background: var(--card);
       padding: 30px;
-      border-radius: 20px;
-      margin-top: 20px;
-      transition: 0.3s;
+      border-radius: var(--radius);
+      box-shadow: 0 15px 30px rgba(0,0,0,.05);
     }
 
-    .card:hover {
-      transform: translateY(-6px);
+    .downloads a {
+      display: block;
+      background: var(--card);
+      padding: 18px 22px;
+      border-radius: 14px;
+      margin-bottom: 14px;
+      text-decoration: none;
+      color: var(--text);
+      transition: .2s;
+    }
+
+    .downloads a:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0,0,0,.08);
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 20px;
+      background: var(--card);
+      border-radius: var(--radius);
+      overflow: hidden;
     }
 
     th, td {
-      padding: 14px;
-      border-bottom: 1px solid #ddd;
+      padding: 16px 20px;
     }
 
-    tbody tr:hover {
-      background: rgba(123, 92, 255, 0.1);
+    th {
+      background: rgba(0,0,0,.05);
     }
 
-    .downloads a {
-      display: inline-block;
-      margin-right: 20px;
-      margin-top: 10px;
-      padding: 12px 20px;
-      background: var(--accent);
-      color: white;
-      text-decoration: none;
-      border-radius: 25px;
-      transition: 0.3s;
-    }
-
-    .downloads a:hover {
-      opacity: 0.8;
-      transform: scale(1.05);
+    tr:hover {
+      background: rgba(108,99,255,.08);
     }
 
     footer {
       text-align: center;
-      padding: 40px;
-      opacity: 0.6;
+      padding: 50px 20px;
+      color: var(--muted);
+      font-size: 14px;
     }
   </style>
 </head>
 
 <body>
 
-<header>
-  <strong>Agenda Cultural</strong>
+  <header id="inicio">
+    <h1>Agenda Cultural · Datos Abiertos</h1>
+    <p>
+      Exploración de eventos culturales mediante web scraping,
+      análisis de texto y publicación abierta con GitHub Pages.
+    </p>
+  </header>
 
   <nav>
-    <a href="#inicio">Inicio</a>
-    <a href="#datos">Datos</a>
-    <a href="#descarga">Descargas</a>
+    <div>
+      <a href="#inicio">Inicio</a>
+      <a href="#datos">Datos</a>
+      <a href="#hallazgos">Hallazgos</a>
+    </div>
+    <button class="toggle" onclick="document.body.classList.toggle('dark')">
+      🌙 / ☀️
+    </button>
   </nav>
 
-  <button class="toggle" onclick="toggleMode()">🌙</button>
-</header>
+  <div class="container">
 
-<section id="inicio">
-  <h1>Agenda Cultural de Lima</h1>
-  <p>Proyecto académico de extracción y visualización de eventos culturales mediante scraping web.</p>
+    <section>
+      <h2>¿Qué buscamos responder?</h2>
+      <p>
+        Identificar patrones en la agenda cultural: qué actividades predominan,
+        qué palabras se repiten y qué tipo de eventos tienen mayor presencia.
+      </p>
+    </section>
 
-  <div class="card">
-    <h2>Objetivo</h2>
-    <p>
-      Demonstrar un flujo reproducible de obtención, limpieza y publicación de datos culturales
-      utilizando Python, GitHub y GitHub Pages.
-    </p>
+    <section>
+      <h2>Resumen general</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Total de eventos</h3>
+          <p>98 registros culturales</p>
+        </div>
+        <div class="card">
+          <h3>Palabra dominante</h3>
+          <p>Exposición</p>
+        </div>
+        <div class="card">
+          <h3>Fuente</h3>
+          <p>Web cultural pública</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 🔥 DESCARGAS FUNCIONANDO -->
+    <section id="datos" class="downloads">
+      <h2>Descarga de datos</h2>
+
+      <a 
+        href="https://raw.githubusercontent.com/jassminediaz/Agenda_cultural/main/data/raw.csv"
+        download
+      >
+        📄 raw.csv — datos extraídos
+      </a>
+
+      <a 
+        href="https://raw.githubusercontent.com/jassminediaz/Agenda_cultural/main/data/clean.csv"
+        download
+      >
+        ✨ clean.csv — datos limpios
+      </a>
+
+      <a 
+        href="https://raw.githubusercontent.com/jassminediaz/Agenda_cultural/main/data/summary.csv"
+        download
+      >
+        📊 summary.csv — resumen
+      </a>
+    </section>
+
+    <section>
+      <h2>Palabras más frecuentes</h2>
+      <table>
+        <tr><th>Palabra</th><th>Frecuencia</th></tr>
+        <tr><td>exposición</td><td>12</td></tr>
+        <tr><td>concierto</td><td>9</td></tr>
+        <tr><td>cultural</td><td>8</td></tr>
+        <tr><td>teatro</td><td>6</td></tr>
+      </table>
+    </section>
+
+    <section id="hallazgos">
+      <h2>Hallazgos</h2>
+      <ul>
+        <li>Predominan eventos artísticos presenciales.</li>
+        <li>Alta presencia de exposiciones culturales.</li>
+        <li>Agenda con enfoque accesible y gratuito.</li>
+      </ul>
+    </section>
+
   </div>
-</section>
 
-<section id="datos">
-  <h2>Dataset</h2>
-
-  <div class="card">
-    <p>Los datos fueron obtenidos de una agenda cultural pública y procesados en tres etapas:</p>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Archivo</th>
-          <th>Descripción</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>raw.csv</td>
-          <td>Eventos obtenidos directamente del scraping</td>
-        </tr>
-        <tr>
-          <td>clean.csv</td>
-          <td>Datos limpiados y estructurados</td>
-        </tr>
-        <tr>
-          <td>summary.csv</td>
-          <td>Resumen estadístico del dataset</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<section id="descarga">
-  <h2>Descarga de datos</h2>
-
-  <div class="downloads">
-    <a href="https://raw.githubusercontent.com/jassminediaz/Agenda_cultural/main/data/raw.csv" download>📄 raw.csv</a>
-    <a href="https://raw.githubusercontent.com/jassminediaz/Agenda_cultural/main/data/clean.csv" download>✨ clean.csv</a>
-    <a href="https://raw.githubusercontent.com/jassminediaz/Agenda_cultural/main/data/summary.csv" download>📊 summary.csv</a>
-  </div>
-</section>
-
-<footer>
-  Proyecto académico · PUCP · 2026
-</footer>
-
-<script>
-  function toggleMode() {
-    document.body.classList.toggle("dark");
-  }
-</script>
+  <footer>
+    Proyecto académico · Extracción y Procesamiento de Datos · 2026
+  </footer>
 
 </body>
 </html>
+
