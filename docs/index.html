@@ -1,25 +1,210 @@
-<section class="downloads">
-  <h2>Descarga de datos</h2>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Agenda Cultural · Datos Abiertos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <a
-    href="https://raw.githubusercontent.com/jassminediaz/Agenda_cultural/main/data/raw.csv"
-    download
-  >
-    📄 Descargar raw.csv
-  </a>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <a
-    href="https://raw.githubusercontent.com/jassminediaz/Agenda_cultural/main/data/clean.csv"
-    download
-  >
-    ✨ Descargar clean.csv
-  </a>
+  <style>
+    :root {
+      --bg: #f5f5f7;
+      --card: #ffffff;
+      --text: #1d1d1f;
+      --muted: #6e6e73;
+      --accent: #6b5cff;
+      --radius: 18px;
+    }
 
-  <a
-    href="https://raw.githubusercontent.com/jassminediaz/Agenda_cultural/main/data/summary.csv"
-    download
-  >
-    📊 Descargar summary.csv
-  </a>
-</section>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    header {
+      padding: 90px 20px 70px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 44px;
+      font-weight: 600;
+      letter-spacing: -1px;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      max-width: 640px;
+      margin: auto;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 0 20px 80px;
+    }
+
+    section {
+      margin-top: 80px;
+    }
+
+    h2 {
+      font-weight: 500;
+      font-size: 26px;
+      margin-bottom: 20px;
+    }
+
+    /* Cards */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: var(--card);
+      padding: 30px;
+      border-radius: var(--radius);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-weight: 500;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    /* Downloads */
+    .downloads a {
+      display: block;
+      background: var(--card);
+      padding: 18px 22px;
+      border-radius: 14px;
+      margin-bottom: 14px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      transition: 0.25s ease;
+    }
+
+    .downloads a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+    }
+
+    /* Table */
+    table {
+      width: 100%;
+      background: var(--card);
+      border-collapse: collapse;
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 16px 20px;
+      border-bottom: 1px solid #eee;
+    }
+
+    th {
+      background: #f0f0f2;
+      font-weight: 500;
+    }
+
+    tr:hover {
+      background: #fafaff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Agenda Cultural · Datos Abiertos</h1>
+  <p>
+    Proyecto académico de extracción, procesamiento y publicación
+    de eventos culturales utilizando Python y GitHub Pages.
+  </p>
+</header>
+
+<div class="container">
+
+  <section>
+    <h2>¿Qué buscamos responder?</h2>
+    <p>
+      Analizar qué tipos de actividades culturales predominan
+      y qué palabras aparecen con mayor frecuencia en la agenda cultural digital.
+    </p>
+  </section>
+
+  <section>
+    <h2>Resumen general</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Total de eventos</h3>
+        <p>98 registros culturales</p>
+      </div>
+      <div class="card">
+        <h3>Temática dominante</h3>
+        <p>Exposiciones y conciertos</p>
+      </div>
+      <div class="card">
+        <h3>Fuente</h3>
+        <p>Agenda cultural pública</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="downloads">
+    <h2>Descarga de datos</h2>
+
+    <a href="https://raw.githubusercontent.com/jassminediaz/Agenda_cultural/main/data/raw.csv" download>
+      📄 Descargar raw.csv
+    </a>
+
+    <a href="https://raw.githubusercontent.com/jassminediaz/Agenda_cultural/main/data/clean.csv" download>
+      ✨ Descargar clean.csv
+    </a>
+
+    <a href="https://raw.githubusercontent.com/jassminediaz/Agenda_cultural/main/data/summary.csv" download>
+      📊 Descargar summary.csv
+    </a>
+  </section>
+
+  <section>
+    <h2>Hallazgos</h2>
+    <ul>
+      <li>Predominan eventos artísticos presenciales.</li>
+      <li>La palabra “exposición” aparece como eje cultural central.</li>
+      <li>Existe fuerte presencia de actividades gratuitas.</li>
+    </ul>
+  </section>
+
+</div>
+
+<footer>
+  Curso de Extracción y Procesamiento de Datos · 2026
+</footer>
+
+</body>
+</html>
+
 
